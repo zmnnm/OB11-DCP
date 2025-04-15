@@ -1,0 +1,15 @@
+{
+  "name": "js-pushover",
+  "version": "1.0.0",
+  "description": "Simple JavaScript Pushover Package",
+  "main": "js-pushover.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caleb Kinney",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node-fetch": "^2.1.2",
+    "node-fetch": "^2.2.0"
+  }
+}
