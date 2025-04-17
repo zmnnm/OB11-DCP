@@ -17,7 +17,7 @@ let poAdd = [];
 //prepare pushover
 async function prepover() {
     const proxyUrl = "https://corsproxy.io/";
-    const backgroundTxtUrl = "https://lisy.ahrt.hu/documents/OB11_doku/filename.txt";
+    const backgroundTxtUrl = "https://lisy.ahrt.hu/documents/OB_API_DOKU/filename_OB11.txt";
     const poapi = "a9fvkphtymjafwnqaeq5krduv1gut7";
 
     try {
