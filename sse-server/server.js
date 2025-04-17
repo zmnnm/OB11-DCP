@@ -18,6 +18,7 @@ let poAdd = [];
 async function prepover() {
     const proxyUrl = "https://corsproxy.io/";
     const backgroundTxtUrl = "https://lisy.ahrt.hu/documents/OB11_doku/filename.txt";
+    const poapi = "a9fvkphtymjafwnqaeq5krduv1gut7";
 
     try {
         let response = await fetch(proxyUrl + backgroundTxtUrl);
@@ -85,7 +86,7 @@ app.post('/isomic', (req, res) => {
     const { message, status } = req.body;
     console.log("Sending isolated messege to sound tech: ", message);
     const jsPushoverObj = {
-        token: "a9acda23eaojexskmk3ytoo3ubra75",
+        token: poapi,
         user: poAdd[1],
         message: message,
         title: "OB4",
@@ -103,7 +104,7 @@ app.post('/isotech', (req, res) => {
     const { message, status } = req.body;
     console.log("Sending isolated messege to Mic: ", message);
     const jsPushoverObj = {
-        token: "a9acda23eaojexskmk3ytoo3ubra75",
+        token: poapi,
         user: poAdd[2],
         message: message,
         title: "OB4",
@@ -121,24 +122,7 @@ app.post('/isoeic', (req, res) => {
     const { message, status } = req.body;
     console.log("Sending isolated messege to EIC: ", message);
     const jsPushoverObj = {
-        token: "a9acda23eaojexskmk3ytoo3ubra75",
-        user: poAdd[3],
-        message: message,
-        title: "OB4",
-      };
-    jsPushover.Push(jsPushoverObj)
-    res.status(200).json({ success: true });
-    } else {
-        console.log("Sending failed, no ID found");
-    }
-});
-
-//BALU KÁVÉZÓ
-app.post('/bcafe', (req, res) => {
-    if (poAdd[3]!="-") {
-    message = "Balázs a kávézót" + cafeStatus + "-ra állította";
-    const jsPushoverObj = {
-        token: "a9acda23eaojexskmk3ytoo3ubra75",
+        token: poapi,
         user: poAdd[3],
         message: message,
         title: "OB4",
@@ -155,7 +139,7 @@ async function poSend(msg) {
     poAdd.slice(1).forEach(element => {
 		if (element!="-") {
         const jsPushoverObj = {
-        token: "a9acda23eaojexskmk3ytoo3ubra75",
+        token: poapi,
         user: element,
         message: msg,
         title: "OB4",
@@ -173,7 +157,7 @@ app.post('/cafe-status', (req, res) => {
     clients.forEach(client => {
         client.write(`data: {"status": "${cafeStatus}"}\n\n`);
     });
-	postData("https://lisy.ahrt.hu/cgi-bin/mtarsadat.exe?kavezo=KK11-"+cafeStatus);
+	//postData("https://lisy.ahrt.hu/cgi-bin/mtarsadat.exe?kavezo=KK11-"+cafeStatus);
     res.status(200).json({ success: true, status: cafeStatus });
 });
 
