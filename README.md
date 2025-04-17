@@ -17,9 +17,11 @@ hibát küldeni. Ilyen esetben Lisy-ben kell frissíteni a kamerarajzokat, vagy 
 
 szimpla üzenet:
 HTML POST:
+```
 link: http://localhost:3000/send
 body: {"message": "Üzenet"}
 content type: application\json
+```
 
 A szimpla üzenetek megjelennek a web felületen, illetve push értesítés is megy róluk
 
@@ -27,18 +29,22 @@ A szimpla üzenetek megjelennek a web felületen, illetve push értesítés is m
 
 Üzenet mikrofonosnak, technikusnak, műszveznek:
 HTML POST:
+```
 link: http://localhost:3000/[isomic, isotech, isoeic] <- értelemszerűen amelyik kell
 body: {"message": "Üzenet"}
 content type: application\json
+```
 
 Ezeket az üzeneteket csak a címzettek kapják meg pushover üzenetként, és a web felületen nem jelennek meg.
 
 ---
 
+```
 Összes megjelenítő oldal újratöltése:
 link: http://localhost:3000/reload
 body: {"cmd": "reload"}
 content type: application\json
+```
 
 A fentebb említett betöltési hibák ellen tökéletes.
 
