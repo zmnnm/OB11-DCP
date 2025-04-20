@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jsPushover = require('js-pushover');
 const fs = require('node:fs');
+const config = require('./secrets.js');
 
 const app = express();
 const port = 3000;
@@ -13,12 +14,13 @@ app.use(bodyParser.json());
 let clients = [];
 let cafeStatus = 'Zárva';
 let poAdd = [];
+const poapi = config.pushoverApiKey;
+
 
 //prepare pushover
 async function prepover() {
     const proxyUrl = "https://corsproxy.io/";
-    const backgroundTxtUrl = "https://lisy.ahrt.hu/documents/OB_API_DOKU/filename_OB11.txt";
-    const poapi = "a9fvkphtymjafwnqaeq5krduv1gut7";
+    const backgroundTxtUrl = config.mainSource;
 
     try {
         let response = await fetch(proxyUrl + backgroundTxtUrl);
@@ -89,7 +91,7 @@ app.post('/isomic', (req, res) => {
         token: poapi,
         user: poAdd[1],
         message: message,
-        title: "OB4",
+        title: "OB11",
       };
     jsPushover.Push(jsPushoverObj)
     res.status(200).json({ success: true });
@@ -107,7 +109,7 @@ app.post('/isotech', (req, res) => {
         token: poapi,
         user: poAdd[2],
         message: message,
-        title: "OB4",
+        title: "OB11",
       };
     jsPushover.Push(jsPushoverObj)
     res.status(200).json({ success: true });
@@ -125,7 +127,7 @@ app.post('/isoeic', (req, res) => {
         token: poapi,
         user: poAdd[3],
         message: message,
-        title: "OB4",
+        title: "OB11",
       };
     jsPushover.Push(jsPushoverObj)
     res.status(200).json({ success: true });
@@ -142,7 +144,7 @@ async function poSend(msg) {
         token: poapi,
         user: element,
         message: msg,
-        title: "OB4",
+        title: "OB11",
 		};
 		jsPushover.Push(jsPushoverObj)
     } else {
@@ -157,22 +159,9 @@ app.post('/cafe-status', (req, res) => {
     clients.forEach(client => {
         client.write(`data: {"status": "${cafeStatus}"}\n\n`);
     });
-	//postData("https://lisy.ahrt.hu/cgi-bin/mtarsadat.exe?kavezo=KK11-"+cafeStatus);
     res.status(200).json({ success: true, status: cafeStatus });
 });
 
-async function postData(url = '') {
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: JSON.stringify("Hello")
-    });
-    return await response;
-  } catch (error) {
-    console.error('Fetch error:', error);
-  }
-}
 
 app.get('/fetch-pdf', async (req, res) => {
     const pdfUrl = req.query.url;

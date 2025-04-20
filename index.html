@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OB4 DCP</title>
+    <title>OB11 DCP</title>
     <style>
         html, body {
             margin: 0;
@@ -93,11 +93,12 @@
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script src="secrets.js"></script>
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
-
+        console.log(window.secrets);
         const proxyUrl = "https://corsproxy.io/";
-        const backgroundTxtUrl = "https://lisy.ahrt.hu/documents/OB_API_DOKU/filename_OB11.txt";
+        const backgroundTxtUrl = window.secrets.mainSource;
         const defaultBackground = 'fallback.jpg';
 		const eventSource = new EventSource("http://localhost:3000/sse");
 

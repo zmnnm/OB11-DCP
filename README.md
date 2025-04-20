@@ -1,7 +1,11 @@
 # DCP rendszer használati útmutató
 
 ## Indítás:
-Első és legfontosabb, hogy a Node.JS szerver fusson. Ez bármilyen tetszőleges módon mehet, de találsz mellékelve egy controller programot.
+
+Ha letöltötted, át kell írd a "secrets.js" file-okban az api kulcsokat és az elérési utat. Ezeket megkaptod tőlem valamilyen formában.
+A file-ok a root könyvtárban, illetve a server mappában vannak.
+
+Másik fontos dolog, hogy a Node.JS szerver fusson. Ez bármilyen tetszőleges módon mehet, de találsz mellékelve egy controller programot.
 !! Ez szükséges a .pdf formátumú kamerarajzok miatt, illetve a különbőző értesítések és riasztások miatt. !!
 
 Ha ez rendben elindult, megnyitatod az index.html file-t.
@@ -52,4 +56,5 @@ A fentebb említett betöltési hibák ellen tökéletes.
 A szerver localhost-on üzemel, hogy kímélje a kocsik IP forgalmát. Ha Neked ez nem megfelelő, a server file legalján tudod megváltoztatni.
 Ha bármi problémád akad, vagy szeretnéd valami kis extrával megcsavarni a saját verziód, keress bátran!
 
+Kellemes használatot!
 Zémann-Kiss Mátyás
