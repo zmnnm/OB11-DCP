@@ -43,8 +43,8 @@ Ezeket az üzeneteket csak a címzettek kapják meg pushover üzenetként, és a
 
 ---
 
-```
 Összes megjelenítő oldal újratöltése:
+```
 link: http://localhost:3000/reload
 body: {"cmd": "reload"}
 content type: application\json
